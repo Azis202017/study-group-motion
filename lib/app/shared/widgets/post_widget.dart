@@ -1,4 +1,4 @@
-import 'package:deep_dive_get_cli/app/data/model/post_model.dart';
+import 'package:deep_dive_get_cli/app/data/model/post_api_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,11 +27,8 @@ class Post extends StatelessWidget {
                 child: SizedBox(
                   width: 36,
                   height: 36,
-                  child: Image.asset(
-                    postModel.fotoProfile.isEmpty
-                        ? ""
-                        : 'assets/images/${postModel.postingGambar}.png',
-                    fit: BoxFit.cover,
+                  child: Image.network(
+                    postModel.fotoUrl,
                   ),
                 ),
               ),
@@ -42,13 +39,13 @@ class Post extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    postModel.namaAkun.isEmpty ? "" : postModel.namaAkun,
+                    postModel.user.name.isEmpty ? "" : postModel.user.name,
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  postModel.isSponsor
+                  postModel.isSponsor == 1
                       ? Text(
                           "Sponsored",
                           style: GoogleFonts.poppins(
@@ -64,8 +61,8 @@ class Post extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        Image.asset(
-          'assets/images/${postModel.postingGambar}.png',
+        Image.network(
+          postModel.fotoUrl,
           width: double.infinity,
           height: 390,
         ),
@@ -77,7 +74,7 @@ class Post extends StatelessWidget {
             IconButton(
               onPressed: onPressed,
               icon: Icon(
-                postModel.isLike ? Icons.favorite : Icons.favorite_border,
+                postModel.isLike == 1 ? Icons.favorite : Icons.favorite_border,
               ),
             ),
             const Icon(
@@ -88,16 +85,16 @@ class Post extends StatelessWidget {
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            '${postModel.jumlahLike} Likes',
+            '0 Likes',
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            ' ${postModel.namaAkun} ${postModel.description}',
+            ' ${postModel.user.name} ${postModel.description}',
           ),
         ),
       ],

@@ -10,7 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   get: 4.6.6
+  get_storage: ^2.1.1
   google_fonts: ^6.1.0
+  http: ^1.2.1
   story_view: ^0.16.0
 
 dev_dependencies:

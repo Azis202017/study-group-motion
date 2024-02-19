@@ -16,9 +16,18 @@ class SnapGramView extends GetView<SnapGramController> {
       ),
       body: StoryView(
         controller: controller.storyController,
-        storyItems: controller.listOfStory,
-        onComplete: controller.snapGramComplete ,
-      )
+        storyItems: [
+          StoryItem.pageImage(
+            url: controller.listOfStory.story.isNotEmpty
+                ? controller.listOfStory.story[0].fotoUrl
+                : "https://media.tenor.com/dB546Q27rIQAAAAM/cz5-cz4.gif",
+            controller: controller.storyController,
+          )
+        ],
+        onComplete: controller.snapGramComplete,
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => print(controller.listOfStory.story.length)),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:deep_dive_get_cli/app/data/model/story_model.dart';
+import 'package:deep_dive_get_cli/app/data/model/story_api_model.dart';
 import 'package:flutter/material.dart';
 
 class ImageStory extends StatelessWidget {
@@ -28,34 +28,36 @@ class ImageStory extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(72),
                     child: Image.asset(
-                      'assets/images/${story.image}.png',
+                      'assets/images/foto_profile.png',
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                story.isLoginAccount
-                    ? Align(
-                        alignment: Alignment.bottomRight,
-                        child: SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text(
-                              '',
-                            ),
-                          ),
-                        ),
-                      )
-                    : const SizedBox(),
+                // story.isLoginAccount
+                //     ? Align(
+                //         alignment: Alignment.bottomRight,
+                //         child: SizedBox(
+                //           width: 20,
+                //           height: 20,
+                //           child: ElevatedButton(
+                //             onPressed: () {},
+                //             child: const Text(
+                //               '',
+                //             ),
+                //           ),
+                //         ),
+                //       )
+                //     : const SizedBox(),
               ],
             ),
           ),
-          SizedBox(
-            width:72,
-            child: Text(
-              story.namaAkun, 
-              textAlign: TextAlign.center,
+          Expanded(
+            child: SizedBox(
+              width:72,
+              child: Text(
+                story.name ?? "", 
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],
